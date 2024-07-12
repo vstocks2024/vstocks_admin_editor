@@ -53,7 +53,7 @@ export const Font = observer(() => {
       const familyname = event.target.value;
       await axios
         .get(
-          `https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDUxAEdaAzpfth29oW8K4TcUBdV2Uacv58&family=${familyname}&capability=WOFF2`
+          `${process.env.NEXT_PUBLIC_GET_FONT_URL}&family=${familyname}&capability=WOFF2`
         )
         .then((response) => {
           setFamily((prev) => ({ ...prev, name: event.target.value }));
@@ -105,7 +105,7 @@ export const Font = observer(() => {
         })
         .catch((err) => {
           console.log(err);
-        }); 
+        });
     } catch (err) {
       console.log(err);
     }
@@ -197,11 +197,8 @@ export const Font = observer(() => {
       .then((response) => {
         setFiles(response["data"]["items"][0]["files"]);
         const regular = response["data"]["items"][0]["files"]["regular"];
-        
-        const newfontFamily = new FontFace(
-          `${family}`,
-          `url(${regular})`
-        );
+
+        const newfontFamily = new FontFace(`${family}`, `url(${regular})`);
         document.fonts.add(newfontFamily);
         newfontFamily
           .load()
@@ -228,13 +225,10 @@ export const Font = observer(() => {
     getFiles();
   }, [family]);
   // End of file
-  React.useEffect(() => {
-    
-    
-  }, [files]);
+  React.useEffect(() => {}, [files]);
   return (
     <>
-      <div className='topdivlayer'>
+      <div className="topdivlayer">
         <section
           onClick={() => setExpand(!expand)}
           className={`comphead ${
@@ -242,7 +236,7 @@ export const Font = observer(() => {
           }`}
         >
           <div className="compheadsec1">
-          <h3 className='widgetheading'>Font</h3>
+            <h3 className="widgetheading">Font</h3>
             <button>
               <span>
                 {expand ? (
@@ -256,7 +250,9 @@ export const Font = observer(() => {
         </section>
         {expand ? (
           <section
-          className={` innersection ${expand ? "border-b-[0.2px]":"border-none"}`}
+            className={` innersection ${
+              expand ? "border-b-[0.2px]" : "border-none"
+            }`}
           >
             <div className="flex flex-col items-center gap-y-3 px-3 py-2 justify-between">
               <div className="flex flex-row items-center justify-between w-full  m-[1px] p-[1px]">
@@ -268,7 +264,7 @@ export const Font = observer(() => {
                     >
                       Family
                     </label>
-                    { (results && results.length) > 0 ? (
+                    {(results && results.length) > 0 ? (
                       <select
                         defaultValue={
                           store.selectedElement &&
@@ -297,11 +293,10 @@ export const Font = observer(() => {
                       <select></select>
                     )}
                   </div>
-                  
-                  <div >
+
+                  <div>
                     <HiDotsVertical size={24} />
                   </div>
-                  
                 </div>
                 <div className="inline-flex flex-col w-1/4 gap-y-1 items-center justify-between  m-[1px] p-[1px]">
                   <label className="font-semibold text-[11px] text-[#999999]">
@@ -350,10 +345,20 @@ export const Font = observer(() => {
                     <option hidden disabled>
                       Select Variant
                     </option>
-                    { (files && Object.keys(files).length>0) ?
-                    Object.keys(files).map((val,ind,oa)=>{
-                    return <><option key={files[`${val}_${ind}`]} value={files[`${val}`]}>{val}</option></>
-                    }):null }
+                    {files && Object.keys(files).length > 0
+                      ? Object.keys(files).map((val, ind, oa) => {
+                          return (
+                            <>
+                              <option
+                                key={files[`${val}_${ind}`]}
+                                value={files[`${val}`]}
+                              >
+                                {val}
+                              </option>
+                            </>
+                          );
+                        })
+                      : null}
                   </select>
                 </div>
                 <div className=" w-1/2 inline-flex flex-row items-center justify-center space-x-2 m-[1px] p-[1px]">
@@ -438,7 +443,7 @@ export const Font = observer(() => {
                   <input
                     type="color"
                     onChange={handleTextBoxFill}
-                    className='colorboxclass'
+                    className="colorboxclass"
                   />
                   <h3 className="text-[12px]">Text Color</h3>
                 </div>
