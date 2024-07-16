@@ -9,9 +9,9 @@
   @apply w-full inline-flex justify-between items-center flex-row m-0.5 p-0.5
 }
 
-.topdivlayer{
+/* .topdivlayer{
   @apply m-[1px] p-[1px]
-}
+} */
 .widgetheading{
   @apply m-[1px] p-[1px]
 }

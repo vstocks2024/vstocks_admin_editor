@@ -27,7 +27,7 @@ export const ElementsPanel = observer(({elementtype}:ElementsPanelProps) => {
   
   return (
     // min-w-[269.102px]
-  <div className="max-w-[19.8%] min-w-[269px] border border-pink-500 hidden min-[977px]:flex  h-full  min-[977px]:flex-col  min-[977px]:items-center 
+  <div className="max-w-[19.8%] min-w-[269px] hidden min-[977px]:flex  h-full  min-[977px]:flex-col  min-[977px]:items-center 
   min-[977px]:justify-start">
     {elementtype=== undefined ? <><Header header={"Canvas"} /><section className=" sidesection">
          <Layers/>

@@ -36,6 +36,7 @@ export class Store {
   backgroundColor: string;
   width: number;
   height: number;
+  _clipboard: any;
 
   selectedMenuOption: MenuOption;
   audios: { fileid: string; filename: string; filesource: string }[];
@@ -59,6 +60,7 @@ export class Store {
     this.videos = [];
     this.images = [];
     this.audios = [];
+    this._clipboard=null;
     this.editorElements = [];
     this.width = 775;
     this.height = 449;
@@ -112,6 +114,43 @@ export class Store {
       canvas.backgroundColor = this.backgroundColor;
     }
   }
+   
+  setCopy() {
+    this.canvas?.getActiveObject()?.clone((cloned:any)=>{
+      this._clipboard = cloned;
+    })
+   
+  }
+
+  setPaste(){
+    
+    this._clipboard.clone((clonedObj:any)=>{
+      this.canvas?.discardActiveObject();
+      clonedObj.set({
+        left: clonedObj.left + 10,
+        top: clonedObj.top + 10,
+        evented: true,
+      });
+      if (clonedObj.type === 'activeSelection') {
+        // active selection needs a reference to the canvas.
+        clonedObj.canvas =this.canvas;
+        clonedObj.forEachObject((obj:any)=>{
+          this.canvas?.add(obj);
+        });
+        // this should solve the unselectability
+        clonedObj.setCoords();
+      } else {
+        this.canvas?.add(clonedObj);
+      }
+      this._clipboard.top += 10;
+      this._clipboard.left += 10;
+      this.canvas?.setActiveObject(clonedObj);
+      this.canvas?.requestRenderAll();
+    });
+
+  }
+  
+
 
   setFlipHorizontal(element: EditorElement) {
     if (isEditorAudioElement(element)) return;

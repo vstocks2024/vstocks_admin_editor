@@ -30,6 +30,29 @@ export const MainPart = observer(() => {
 
   const Icon = store.playing ? MdPause : MdPlayArrow;
 
+  const handleCopy=async()=> {
+    try{
+      if(!store) return;
+       store.setCopy();
+    }
+    catch(error){
+      console.log(error);
+    }
+
+  }
+
+  const handlePaste=async()=>{
+    try{
+      if(!store) return;
+       store.setPaste();
+    }
+    catch(error){
+      console.log(error);
+    }
+
+  }
+
+
   const handleDeleteButton = async () => {
     try {
       if (!localStorage.getItem("template_id")) return;
@@ -309,6 +332,7 @@ export const MainPart = observer(() => {
           <button className="w-10 h-10">
             <span>
               <MdOutlineContentCopy
+              onClick={()=>handleCopy()}
                 size={24}
                 className={`cursor-pointer ${
                   store.selectedElement ? "brightness-100" : "brightness-50"
@@ -318,7 +342,9 @@ export const MainPart = observer(() => {
           </button>
           <button className="w-10 h-10">
             <span>
-              <MdContentPaste size={24} className=" cursor-pointer" />
+              <MdContentPaste
+               onClick={()=>handlePaste()}
+              size={24} className=" cursor-pointer" />
             </span>
           </button>
           <button className="w-10 h-10">

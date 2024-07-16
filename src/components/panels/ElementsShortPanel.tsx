@@ -26,7 +26,7 @@ export const ElementsShortPanel = observer(({elementtype}:ElementsShortPanelProp
   const store = React.useContext(StoreContext);
   
   return (
-  <div className="absolute z-30 w-[250px] top-5 flex flex-col min-[977px]:hidden h-[510px] max-h-[510px]   border border-red-500 m-[1px] p-[1px]  items-center justify-start">
+  <div className="absolute z-30 w-[250px] top-5 flex flex-col min-[977px]:hidden h-[510px] max-h-[510px]  m-[1px] p-[1px]  items-center justify-start">
     {elementtype=== undefined ? <><Header header={"Canvas"} /><section className=" sidesection">
          <Layers/>
          <Dimensions/>
