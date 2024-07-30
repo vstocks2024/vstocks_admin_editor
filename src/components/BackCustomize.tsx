@@ -6,8 +6,8 @@ import React from "react";
 export const BackCustomize = () => {
   const router = useRouter();
   return (
-    <div className=" inline-flex flex-row py-3 px-1.5 w-full">
-      <div className="justify-start m-1  inline-flex flex-row items-center">
+    <div className=" inline-flex flex-row py-3 px-1.5 w-full border border-green-400">
+      <div className="justify-start m-1 flex flex-row items-center">
         <button
           onClick={() => router.back()}
           className="bg-[#CCCCCC]  text-black py-2 px-3  rounded"
