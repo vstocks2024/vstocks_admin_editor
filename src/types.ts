@@ -1,5 +1,6 @@
 import { fabric } from "fabric";
 import { Gradient, Pattern, Shadow } from "fabric/fabric-impl";
+import {z} from "zod";
 
 export type EditorElementBase<T extends string, Properties> = {
   id: string;
@@ -161,4 +162,18 @@ export const family_variants_arr={
 '900italic':"Black Italic"
 };
 
+export const Tags = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+});
 
+export const Category=z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+});

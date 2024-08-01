@@ -54,13 +54,14 @@ export class Store {
   selectedVideoFormat: "mp4" | "webm";
   expandAll: boolean;
   maximize: boolean;
+  
 
   constructor() {
     this.canvas = null;
     this.videos = [];
     this.images = [];
     this.audios = [];
-    this._clipboard=null;
+    this._clipboard = null;
     this.editorElements = [];
     this.width = 775;
     this.height = 449;
@@ -76,6 +77,7 @@ export class Store {
     this.selectedVideoFormat = "mp4";
     this.expandAll = true;
     this.maximize = false;
+    
 
     makeAutoObservable(this);
   }
@@ -114,27 +116,25 @@ export class Store {
       canvas.backgroundColor = this.backgroundColor;
     }
   }
-   
+
   setCopy() {
-    this.canvas?.getActiveObject()?.clone((cloned:any)=>{
+    this.canvas?.getActiveObject()?.clone((cloned: any) => {
       this._clipboard = cloned;
-    })
-   
+    });
   }
 
-  setPaste(){
-    
-    this._clipboard.clone((clonedObj:any)=>{
+  setPaste() {
+    this._clipboard.clone((clonedObj: any) => {
       this.canvas?.discardActiveObject();
       clonedObj.set({
         left: clonedObj.left + 10,
         top: clonedObj.top + 10,
         evented: true,
       });
-      if (clonedObj.type === 'activeSelection') {
+      if (clonedObj.type === "activeSelection") {
         // active selection needs a reference to the canvas.
-        clonedObj.canvas =this.canvas;
-        clonedObj.forEachObject((obj:any)=>{
+        clonedObj.canvas = this.canvas;
+        clonedObj.forEachObject((obj: any) => {
           this.canvas?.add(obj);
         });
         // this should solve the unselectability
@@ -147,10 +147,7 @@ export class Store {
       this.canvas?.setActiveObject(clonedObj);
       this.canvas?.requestRenderAll();
     });
-
   }
-  
-
 
   setFlipHorizontal(element: EditorElement) {
     if (isEditorAudioElement(element)) return;
@@ -1718,7 +1715,7 @@ export class Store {
           ) {
             this.canvas?.remove(...editorElement.properties.splittedTexts);
             // @ts-ignore
-            if(!editorElement.fabricObject) return;
+            if (!editorElement.fabricObject) return;
             editorElement.properties.splittedTexts =
               getTextObjectsPartitionedByCharacters(
                 editorElement.fabricObject as fabric.Textbox,
@@ -2106,7 +2103,6 @@ export class Store {
         end: this.maxTime,
       },
       properties: {
-
         elementId: `${id}`,
         src: imageElement.src,
         effect: {
@@ -2209,7 +2205,7 @@ export class Store {
     console.log(this.editorElements);
   }
   addTextAfterFetch(options: {
-    id:string,
+    id: string;
     fontSize: number | undefined;
     fontFamily: string | undefined;
     text: string;
@@ -2342,14 +2338,14 @@ export class Store {
     this.saveCanvasToVideoWithAudioWebmMp4();
   }
 
-  //Mayank wrote this code 
+  //Mayank wrote this code
 
-  convertCanvasToMP4(){
-     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+  convertCanvasToMP4() {
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
     const stream = canvas.captureStream(30);
     console.log(canvas);
     //const canvas = document.getElementById("lower-canvas") as HTMLCanvasElement;
-  //console.log(this.canvas?.item(0));
+    //console.log(this.canvas?.item(0));
   }
 
   saveCanvasToVideoWithAudioWebmMp4() {
@@ -2357,7 +2353,7 @@ export class Store {
     let mp4 = this.selectedVideoFormat === "mp4";
     const canvas = document.getElementById("lower-canvas") as HTMLCanvasElement;
     console.log(canvas);
-    const stream = canvas.captureStream(30);
+    const stream = canvas.captureStream(15);
 
     const audioElements = this.editorElements.filter(isEditorAudioElement);
     const audioStreams: MediaStream[] = [];
@@ -2476,7 +2472,7 @@ export class Store {
             objectCaching: false,
             selectable: true,
             lockUniScaling: true,
-            crossOrigin:"anonymous",
+            crossOrigin: "anonymous",
 
             opacity: element.placement.opacity,
             // filters: filters,
@@ -2520,9 +2516,8 @@ export class Store {
               properties: {
                 ...element.properties,
                 // @ts-ignore
-                crossOrigin: target.crossOrigin ?? element.properties.crossOrigin,
+                
               },
-              
             };
             store.updateEditorElement(newElement);
           });
@@ -2550,7 +2545,7 @@ export class Store {
             objectCaching: false,
             selectable: true,
             lockUniScaling: true,
-            crossOrigin:"anonymous",
+            crossOrigin: "anonymous",
 
             opacity: element.placement.opacity,
 
@@ -2606,7 +2601,7 @@ export class Store {
               properties: {
                 ...element.properties,
                 // @ts-ignore
-                crossOrigin: target.crossOrigin ?? element.properties.crossOrigin,
+                
               },
             };
             store.updateEditorElement(newElement);

@@ -1,5 +1,4 @@
 "use client";
-
 import { fabric } from "fabric";
 import React, { useEffect, useState } from "react";
 import { StoreContext } from "@/store";
@@ -65,7 +64,7 @@ export const Editor = observer(() => {
   }, []);
   return (
   <MainLayout>
-      <main className="flex flex-col items-center justify-between   w-full">
+      <main className="relative flex flex-col items-center justify-between   w-full">
      <div className="flex flex-col  w-full">
       <BackCustomize/>
           <MainPart />
