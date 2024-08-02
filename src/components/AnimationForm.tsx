@@ -1,6 +1,6 @@
 "use client";
 
-import { z} from "zod";
+import { z } from "zod";
 import { observer } from "mobx-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -36,7 +36,6 @@ import { EditorElement } from "@/types";
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-
 const MAX_UPLOAD_SIZE = 1024 * 1024 * 3; // 3MB
 const categoryoptionSchema = z.object({
   label: z.string(),
@@ -70,15 +69,13 @@ const FormSchema = z.object({
   license: z.enum(["free", "premium"], {
     required_error: "You must select an option",
   }),
-  orientation:z.enum(["Horizontal","Vertical","Square"],{
+  orientation: z.enum(["Horizontal", "Vertical", "Square"], {
     required_error: "You must select an option",
   }),
-  thumbnail:z
-  .instanceof(File)
-  .refine((file) => {
+  thumbnail: z.instanceof(File).refine((file) => {
     return !file || file.size <= MAX_UPLOAD_SIZE;
   }, "File size must be less than 3MB"),
-  template:z.any()
+  template: z.any(),
 });
 
 const CategorySchema = z.object({
@@ -123,18 +120,25 @@ export const AnimationForm = observer(() => {
       description: "",
       license: "free",
     },
+    resetOptions:{
+      keepDirtyValues:false,
+    }
   });
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    data={...data,template:store.editorElements};
+    data = { ...data, template: store.editorElements };
     console.log(data);
+    
     setLoading(true);
-    const resp = await axios.post(`${process.env.NEXT_PUBLIC_URL}/animations/create`,data,
+    const resp = await axios.post(
+      `${process.env.NEXT_PUBLIC_URL}/animations/create`,
+      data,
       {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    if (resp.statusText === "Created") {
+    if (resp.statusText === "Created" && resp.status===201) {
       console.log(resp);
+      
       (() => handleFormReset())();
       setLoading(false);
       (() => form.reset())();
@@ -142,13 +146,16 @@ export const AnimationForm = observer(() => {
         title: "Success",
         description: `Animation Successfully Submitted`,
       });
+      store.setModal(false);
+      store.canvas?.clear();
+      store.setEditorElements([]);
     } else {
       console.log(resp);
       setLoading(false);
       toast({
         title: "Failure",
         description:
-          "Vector doesn't get added please fill the details carefully",
+          "Animation doesn't get added please fill the details carefully",
         variant: "destructive",
       });
     }
@@ -159,6 +166,8 @@ export const AnimationForm = observer(() => {
     form.resetField("description");
     form.resetField("category_id");
     form.resetField("tag_id");
+    form.resetField("orientation");
+    form.resetField("license");
   }
 
   const [category, setCategory] = useState<z.infer<typeof CategorySchema>[]>(
@@ -198,246 +207,259 @@ export const AnimationForm = observer(() => {
 
   return (
     <>
-     <div 
-                id="EditProfileOverlay" 
-                className="fixed flex justify-center py-7  z-50 top-0 left-0 w-full h-full  bg-white bg-opacity-20 overflow-auto"
-            >
-                <div 
-                    className={`
-                        relative bg-[#202020] w-full max-w-[700px] sm:h-[580px] h-[600px] mx-3 p-4 rounded-lg  overflow-y-auto
+      <div
+        id="EditAnimationOverlay"
+        className="fixed flex justify-center py-7  z-50 top-0 left-0 w-full h-full  bg-white bg-opacity-20 overflow-auto"
+      >
+        <div
+          className={`
+                        relative bg-[#202020] w-full max-w-[750px] sm:h-[580px] h-[655px] mx-3 p-4 rounded-lg  overflow-y-auto
                         
                     `}
-                >
-                          <div className="flex items-center justify-between w-full my-2">
-                        <h1 className="text-[20px] font-medium">
-                          Animation Details
-                        </h1>
-                        <button 
-                            
-                            onClick={() => {store.setModal(false)}} 
-                            className="p-1 rounded-full"
+        >
+          <div className="flex items-center justify-between w-full my-2">
+            <h1 className="text-[20px] font-medium">Animation Details</h1>
+            <button
+              onClick={() => {
+                store.setModal(false);
+              }}
+              className="p-1 rounded-full"
+            >
+              <AiOutlineClose size="22" />
+            </button>
+          </div>
+          <div className="flex flex-row items-center justify-center p-2">
+            <Form {...form}>
+              <form
+                encType="multipart/form-data"
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-8 w-full"
+              >
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Animation Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Animation Name" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        Write a name of animation
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Animation Description</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Write a brief description about the category"
+                          className="resize-none"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        Write a brief description about this animation word
+                        limit is upto(500 words).
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {categoryOption && categoryOption.length > 0 ? (
+                  <FormField
+                    control={form.control}
+                    name="category_id"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Animation Categories</FormLabel>
+                        <FormControl>
+                          <MultipleSelector
+                            {...field}
+                            hidePlaceholderWhenSelected={true}
+                            defaultOptions={categoryOption}
+                            placeholder="Select Category for Animation"
+                            emptyIndicator={
+                              <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
+                                no results found.
+                              </p>
+                            }
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          Select atleast one category for the animation
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                ) : (
+                  <></>
+                )}
+                {tagOption && tagOption.length > 0 ? (
+                  <FormField
+                    control={form.control}
+                    name="tag_id"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Animation Tags</FormLabel>
+                        <FormControl>
+                          <MultipleSelector
+                            {...field}
+                            hidePlaceholderWhenSelected={true}
+                            defaultOptions={tagOption}
+                            placeholder="Select Tags for Animation"
+                            emptyIndicator={
+                              <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
+                                no results found.
+                              </p>
+                            }
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          Select at atleast one tag for the animation
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                ) : (
+                  <></>
+                )}
+                <FormField
+                  control={form.control}
+                  name="license"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>Animation License</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                          className="flex flex-row items-center justify-start"
                         >
-                            <AiOutlineClose size="22"/>
-                        </button>
-                    </div>
-    <div className="flex flex-row items-center justify-center p-2">
-        <Form {...form}>
-          <form
-            encType="multipart/form-data"
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 w-full"
-          >
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Animation Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Animation Name" {...field} />
-                  </FormControl>
-                  <FormDescription>Write a name of animation</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Animation Description</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Write a brief description about the category"
-                      className="resize-none"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Write a brief description about this animation word
-                    limit is upto(500 words).
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            {categoryOption && categoryOption.length > 0 ? (
-              <FormField
-                control={form.control}
-                name="category_id"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Animation Categories</FormLabel>
-                    <FormControl>
-                      <MultipleSelector
-                        {...field}
-                        hidePlaceholderWhenSelected={true}
-                        defaultOptions={categoryOption}
-                        placeholder="Select Category for Animation"
-                        emptyIndicator={
-                          <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
-                            no results found.
-                          </p>
-                        }
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Select atleast one category for the animation
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            ) : (
-              <></>
-            )}
-            {tagOption && tagOption.length > 0 ? (
-              <FormField
-                control={form.control}
-                name="tag_id"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Animation Tags</FormLabel>
-                    <FormControl>
-                      <MultipleSelector
-                        {...field}
-                        hidePlaceholderWhenSelected={true}
-                        defaultOptions={tagOption}
-                        placeholder="Select Tags for Animation"
-                        emptyIndicator={
-                          <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
-                            no results found.
-                          </p>
-                        }
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Select at atleast one tag for the animation
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            ) : (
-              <></>
-            )}
-            <FormField
-              control={form.control}
-              name="license"
-              render={({ field }) => (
-                <FormItem className="space-y-3">
-                  <FormLabel>Animation License</FormLabel>
-                  <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                      className="flex flex-row items-center justify-start"
-                    >
-                      <FormItem className="flex items-center space-x-2 space-y-0">
+                          <FormItem className="flex items-center space-x-2 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="free" />
+                            </FormControl>
+                            <FormLabel className="font-normal">Free</FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-2 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="premium" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Premium
+                            </FormLabel>
+                          </FormItem>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="orientation"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Animation Size</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
                         <FormControl>
-                          <RadioGroupItem value="free" />
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a size of animation" />
+                          </SelectTrigger>
                         </FormControl>
-                        <FormLabel className="font-normal">Free</FormLabel>
-                      </FormItem>
-                      <FormItem className="flex items-center space-x-2 space-y-0">
-                        <FormControl>
-                          <RadioGroupItem value="premium" />
-                        </FormControl>
-                        <FormLabel className="font-normal">Premium</FormLabel>
-                      </FormItem>
-                    </RadioGroup>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> 
-            <FormField
-            control={form.control}
-            name="orientation"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Animation Size</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a size of animation" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="Horizontal">Facebook Event Cover (1920 x 1080)</SelectItem>
-                    <SelectItem value="Vertical">Instagram Post (1080 x 1920)</SelectItem>
-                    <SelectItem value="Square">Instagram Story (1080 x 1080)</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormDescription>
-                 Select the size of your animation
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-             <FormField
-                control={form.control}
-                name="thumbnail"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Upload Animation Thumbnail</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        value={undefined}
-                        className="text-white bg-gray-800 hover:bg-gray-700"
-                        type="file"
-                        placeholder="Animation Thumbnail"
-                        accept="image/*"
-                        onChange={(event) =>
-                          field.onChange(
-                            event.target.files && event.target.files[0]
-                          )
-                        }
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Upload the animation thumbnail image file any format
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-         
-            {/* <div className="inline-flex flex-row items-center justify-between gap-x-2"> */}
-            <LoadingButton
-              loading={loading}
-              className="bg-sky-600 hover:bg-sky-500 text-white"
-              variant={"default"}
-              type="submit"
-            >
-              Submit
-            </LoadingButton>
-            &nbsp;&nbsp;
-            <Button
-              variant={"default"}
-              className="bg-sky-600 hover:border-sky-500"
-              onClick={() => form.reset()}
-              type="reset"
-            >
-              Reset
-            </Button>
-            &nbsp;&nbsp;
-            <Button
-              variant={"default"}
-              className="bg-sky-600 hover:border-sky-500"
-              onClick={() =>{store.setModal(false)}}
-              type="button"
-            >
-              Close
-            </Button>
-            {/* </div> */}
-          </form>
-        </Form>
-      </div>
-      </div>
+                        <SelectContent>
+                          <SelectItem value="Horizontal">
+                            Facebook Event Cover (1920 x 1080)
+                          </SelectItem>
+                          <SelectItem value="Vertical">
+                            Instagram Post (1080 x 1920)
+                          </SelectItem>
+                          <SelectItem value="Square">
+                            Instagram Story (1080 x 1080)
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormDescription>
+                        Select the size of your animation
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="thumbnail"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Upload Animation Thumbnail</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          value={undefined}
+                          className="text-white bg-gray-800 hover:bg-gray-700"
+                          type="file"
+                          placeholder="Animation Thumbnail"
+                          accept="image/*"
+                          onChange={(event) =>
+                            field.onChange(
+                              event.target.files && event.target.files[0]
+                            )
+                          }
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        Upload the animation thumbnail image file any format
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {/* <div className="inline-flex flex-row items-center justify-between gap-x-2"> */}
+                <LoadingButton
+                  loading={loading}
+                  className="bg-sky-600 hover:bg-sky-500 text-white"
+                  variant={"default"}
+                  type="submit"
+                >
+                  Submit
+                </LoadingButton>
+                &nbsp;&nbsp;
+                <Button
+                  variant={"default"}
+                  className="bg-sky-600 hover:border-sky-500"
+                  onClick={() => form.reset()}
+                  type="reset"
+                >
+                  Reset
+                </Button>
+                &nbsp;&nbsp;
+                <Button
+                  variant={"default"}
+                  className="bg-sky-600 hover:border-sky-500"
+                  onClick={() => {
+                    store.setModal(false);
+                  }}
+                  type="button"
+                >
+                  Close
+                </Button>
+                {/* </div> */}
+              </form>
+            </Form>
+          </div>
+        </div>
       </div>
     </>
   );

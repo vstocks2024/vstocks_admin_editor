@@ -75,7 +75,7 @@ export const MainCanvas = observer(() => {
     {/* <canvas id="lower-canvas" className={`absolute touch-none  select-none min-w-[750px] min-h-[422px] h-[436px] w-[775px]  max-w-[775px]  max-h-[436px] border-[0.1px] border-green-300`}/> */}
 
       {/* New Code is written for above two div */}
-    <div className='relative m-[1px] p-[1px]  flex w-full  justify-center items-center '>
+    <div className='relative m-[1px] p-[1px]  flex w-full  justify-center items-center border border-soild border-gray-400 '>
     <canvas id="lower-canvas"  className={`absolute w-full shrink touch-none select-none border border-solid border-green-300`}/>
     {
           resizeopen===true ? (<> <div className="fixed flex flex-grow items-center justify-center py-2 px-3 md:p-2  top-0 left-0 w-full h-full bg-black bg-opacity-50">
