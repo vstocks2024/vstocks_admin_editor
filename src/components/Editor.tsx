@@ -59,6 +59,7 @@ export const Editor = observer(() => {
     fabric.util.requestAnimFrame(function render() {
       canvas.renderAll();
       fabric.util.requestAnimFrame(render);
+      
     });
     
   }, []);

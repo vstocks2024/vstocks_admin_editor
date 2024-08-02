@@ -6,6 +6,7 @@ import { IoMdVolumeOff,IoMdVolumeHigh} from "react-icons/io";
 import { AiOutlineClose } from 'react-icons/ai';
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { ElementsShortPanel } from './panels/ElementsShortPanel';
+import { AnimationForm } from './AnimationForm';
 
 export const MainCanvas = observer(() => {
   const store = React.useContext(StoreContext);
@@ -57,9 +58,11 @@ export const MainCanvas = observer(() => {
   }
   
   return (
+    
     // <div className='flex border border-green-500 m-0.5 grow shrink basis-0 p-4 min-w-[785] h-[510px] max-w-[1035px]'>
     //   <div className='flex flex-col border  border-yellow-400 m-0.5 p-0.5 w-full min-h-[478px] min-w-[753px] max-h-[478px] max-w-[1003px] justify-center items-center '>
     <div className='flex w-full h-full flex-col items-center justify-center grow shrink basis-0 p-[1px]  min-[977px]:min-w-[33%] min-[977px]:max-w-full'>
+      { store.modal ? <AnimationForm/>:<></>}
     <div className='flex flex-col w-full m-[1px] p-[1px] justify-center items-center '>
         <div className='relative inline-flex m-[1px] gap-x-2 flex-row items-center justify-center p-1 gap-3'>
           <button onClick={()=>setResizeOpen(true)} className='bg-[#202020] text-[14px]  hover:bg-[#101010]  h-full px-4 py-2 font-bold rounded'>Resize</button>
@@ -72,8 +75,8 @@ export const MainCanvas = observer(() => {
     {/* <canvas id="lower-canvas" className={`absolute touch-none  select-none min-w-[750px] min-h-[422px] h-[436px] w-[775px]  max-w-[775px]  max-h-[436px] border-[0.1px] border-green-300`}/> */}
 
       {/* New Code is written for above two div */}
-    <div className='relative m-[1px] p-[1px]  flex w-full  justify-center items-center   border-solid border-slate-400 border '>
-    <canvas id="lower-canvas"  className={`absolute w-full shrink touch-none select-none border border-green-300`}/>
+    <div className='relative m-[1px] p-[1px]  flex w-full  justify-center items-center '>
+    <canvas id="lower-canvas"  className={`absolute w-full shrink touch-none select-none border border-solid border-green-300`}/>
     {
           resizeopen===true ? (<> <div className="fixed flex flex-grow items-center justify-center py-2 px-3 md:p-2  top-0 left-0 w-full h-full bg-black bg-opacity-50">
              <div className={`fixed m-0.5 p-0.5  z-50 flex flex-col rounded-md  bg-black w-[350px] h-[250px]`}>
@@ -103,6 +106,7 @@ export const MainCanvas = observer(() => {
     </div>
     </div>
     </div>
+    
   )
 });
 

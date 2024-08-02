@@ -54,6 +54,7 @@ export class Store {
   selectedVideoFormat: "mp4" | "webm";
   expandAll: boolean;
   maximize: boolean;
+  modal:boolean;
   
 
   constructor() {
@@ -77,6 +78,7 @@ export class Store {
     this.selectedVideoFormat = "mp4";
     this.expandAll = true;
     this.maximize = false;
+    this.modal=false;
     
 
     makeAutoObservable(this);
@@ -92,6 +94,9 @@ export class Store {
 
   setMaximizeButton(maximize: boolean) {
     this.maximize = true;
+  }
+  setModal(modal:boolean){
+    this.modal=modal;
   }
 
   setCanvasWidthandHeight(canvas: fabric.Canvas | null, w: number, h: number) {

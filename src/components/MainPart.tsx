@@ -305,7 +305,8 @@ export const MainPart = observer(() => {
             <span>
               <MdSave
                 size={24}
-                onClick={handleSaveTemplate4}
+                // onClick={handleSaveTemplate4}
+                onClick={()=>{store.setModal(true)}}
                 className="cursor-pointer"
               />
             </span>
