@@ -13,7 +13,7 @@ export const MainCanvas = observer(() => {
   const [openElementsShortPanel, setOpenElementsShortPanel] =
     useState<boolean>(false);
   const [resizeopen, setResizeOpen] = useState<boolean>(false);
-  const [aspectRatio, setAspectRatio] = useState({ ar: "vertical" });
+  const [aspectRatio, setAspectRatio] = useState({ ar: "horizontal" });
   const [windowDimenions, setWindowDimenions] = useState<object>({
     wW: window.innerWidth,
     wH: window.innerHeight,
@@ -59,6 +59,7 @@ export const MainCanvas = observer(() => {
   };
 
   useEffect(() => {
+    console.log("triggered");
     if (!refLowerCanvas.current) return;
     if (aspectRatio.ar === "horizontal") {
       let newWidth = 775.11;
@@ -91,7 +92,12 @@ export const MainCanvas = observer(() => {
       }
       store.setCanvasWidthandHeight(store.canvas, newWidth, newheight);
     }
-  }, [store.selectedMenuOption, aspectRatio]);
+  }, [
+    store.selectedMenuOption,
+    aspectRatio,
+    refLowerCanvas.current?.clientWidth,
+    refLowerCanvas.current?.clientHeight,
+  ]);
 
   useEffect(() => {
     window.addEventListener("resize", handleWindowCanvasResize);
@@ -103,9 +109,7 @@ export const MainCanvas = observer(() => {
 
   function handleFacebookEvent() {
     //
-    store.setCanvasWidthandHeight(store.canvas, 775, 436);
     setAspectRatio({ ar: "horizontal" });
-
     setResizeOpen(false);
   }
   function handleInstagramPost() {

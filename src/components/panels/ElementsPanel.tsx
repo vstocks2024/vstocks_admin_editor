@@ -25,10 +25,9 @@ export const ElementsPanel = observer(({ elementtype }: ElementsPanelProps) => {
   const store = React.useContext(StoreContext);
 
   return (
-    // min-w-[269.102px]
-    <div
-      className="max-w-[19.8%] min-w-[250px] hidden min-[960px]:flex  h-full  min-[960px]:flex-col  min-[960px]:items-center 
-  min-[960px]:justify-start"
+  <div
+      className="max-w-[19.8%] min-w-[250px] hidden min-[977px]:flex  h-full  min-[977px]:flex-col  min-[977px]:items-center 
+  min-[977px]:justify-start bg-[#202020]"
     >
       {elementtype === undefined ? (
         <>
