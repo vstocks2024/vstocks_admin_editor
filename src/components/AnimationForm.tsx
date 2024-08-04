@@ -69,7 +69,7 @@ const FormSchema = z.object({
   license: z.enum(["free", "premium"], {
     required_error: "You must select an option",
   }),
-  orientation: z.enum(["Horizontal", "Vertical", "Square"], {
+  orientation: z.enum(["horizontal", "vertical", "square"], {
     required_error: "You must select an option",
   }),
   thumbnail: z.instanceof(File).refine((file) => {
