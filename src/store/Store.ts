@@ -64,8 +64,8 @@ export class Store {
     this.audios = [];
     this._clipboard = null;
     this.editorElements = [];
-    this.width = 775;
-    this.height = 449;
+    this.width = 245.25;
+    this.height = 436;
     this.backgroundColor = "#242728";
     this.maxTime = 15 * 1000;
     this.playing = false;

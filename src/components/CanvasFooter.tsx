@@ -23,7 +23,7 @@ export const CanvasFooter = () => {
   return (
     <div className="bg-[rgb(32,32,32)] relative w-full">
       {menufooter===true ? <React.Fragment><div ref={menufooterRef}><MenuFooter /></div></React.Fragment>:null}
-   <button onClick={()=>setMenuFooter(!menufooter)} className={`absolute flex min-[977px]:hidden -top-[calc(50%-10px)]  left-[calc(50%-20px)]`}><BsPlusCircleFill  color="#2E67DD" size={40}/></button>
+   <button onClick={()=>setMenuFooter(!menufooter)} className={`absolute flex min-[960px]:hidden -top-[calc(50%-10px)]  left-[calc(50%-20px)]`}><BsPlusCircleFill  color="#2E67DD" size={40}/></button>
       <div className="flex flex-row items-center justify-end px-1">
 
         <div className="flex flex-row items-center justify-center m-0.5">

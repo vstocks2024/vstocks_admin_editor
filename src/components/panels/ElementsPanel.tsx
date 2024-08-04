@@ -4,7 +4,7 @@ import { StoreContext } from "@/store";
 import { observer } from "mobx-react";
 import { Layers } from "@/components/widgetcomponents/Layers";
 import { Dimensions } from "@/components/widgetcomponents/Dimensions";
-import {Background} from "@/components/widgetcomponents/Background";
+import { Background } from "@/components/widgetcomponents/Background";
 import { Alignment } from "@/components/widgetcomponents/Alignment";
 import { Arrange } from "@/components/widgetcomponents/Arrange";
 import { Flip } from "@/components/widgetcomponents/Flip";
@@ -17,53 +17,75 @@ import { Stroke } from "@/components/widgetcomponents/Stroke";
 import { TextShadow } from "@/components/widgetcomponents/TextShadow";
 import { ObjectBackground } from "../widgetcomponents/ObjectBackground";
 
+type ElementsPanelProps = {
+  elementtype: string | undefined;
+};
 
-type ElementsPanelProps={
-  elementtype:string | undefined;
-}
-
-export const ElementsPanel = observer(({elementtype}:ElementsPanelProps) => {
+export const ElementsPanel = observer(({ elementtype }: ElementsPanelProps) => {
   const store = React.useContext(StoreContext);
-  
+
   return (
     // min-w-[269.102px]
-  <div className="max-w-[19.8%] min-w-[269px] hidden min-[977px]:flex  h-full  min-[977px]:flex-col  min-[977px]:items-center 
-  min-[977px]:justify-start">
-    {elementtype=== undefined ? <><Header header={"Canvas"} /><section className=" sidesection">
-         <Layers/>
-         <Dimensions/>
-         <Background/>
-        </section></> :null}
-    {elementtype==="video" ? <><Header header={"Animation"} /><section className="sidesection">
-          <Layers/>
-          <Alignment/>
-          <Arrange/>
-          <Flip/>
-          <Transform/>
-          <Opacity/>    
-      </section></> :null}
-      {elementtype==="image" ? <><Header header={"Image"} /> <section className="sidesection">
-          <Layers/>
-          <Alignment/>
-          <Arrange/>
-          <Flip/>
-          <Transform/>
-          <Stroke/>
-          <TextShadow/>
-          <Opacity/>    
-      </section></> :null}
-      {elementtype==="text" ? <><Header header={"Text"} />   <section className="sidesection">
-          <Layers/>
-          <Alignment/>
-          <Arrange/>
-          <Flip/>
-          <Transform/>
-          <TextAlignment/>
-          <Font/>
-          <ObjectBackground/>
-          <Stroke/>
-          <TextShadow/>
-          <Opacity/> 
-      </section></> :null}
+    <div
+      className="max-w-[19.8%] min-w-[250px] hidden min-[960px]:flex  h-full  min-[960px]:flex-col  min-[960px]:items-center 
+  min-[960px]:justify-start"
+    >
+      {elementtype === undefined ? (
+        <>
+          <Header header={"Canvas"} />
+          <section className=" sidesection">
+            <Layers />
+            <Dimensions />
+            <Background />
+          </section>
+        </>
+      ) : null}
+      {elementtype === "video" ? (
+        <>
+          <Header header={"Animation"} />
+          <section className="sidesection">
+            <Layers />
+            <Alignment />
+            <Arrange />
+            <Flip />
+            <Transform />
+            <Opacity />
+          </section>
+        </>
+      ) : null}
+      {elementtype === "image" ? (
+        <>
+          <Header header={"Image"} />{" "}
+          <section className="sidesection">
+            <Layers />
+            <Alignment />
+            <Arrange />
+            <Flip />
+            <Transform />
+            <Stroke />
+            <TextShadow />
+            <Opacity />
+          </section>
+        </>
+      ) : null}
+      {elementtype === "text" ? (
+        <>
+          <Header header={"Text"} />{" "}
+          <section className="sidesection">
+            <Layers />
+            <Alignment />
+            <Arrange />
+            <Flip />
+            <Transform />
+            <TextAlignment />
+            <Font />
+            <ObjectBackground />
+            <Stroke />
+            <TextShadow />
+            <Opacity />
+          </section>
+        </>
+      ) : null}
     </div>
-  )});
+  );
+});
