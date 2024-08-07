@@ -21,7 +21,7 @@ export async function getObjectURL(key:string)
     
     const command=new GetObjectCommand({
         Bucket:bucketName,
-        Key:key
+        Key:key,
     });
     const url= await getSignedUrl(s3Client,command);
     return url;

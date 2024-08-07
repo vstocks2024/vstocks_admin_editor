@@ -54,8 +54,7 @@ export class Store {
   selectedVideoFormat: "mp4" | "webm";
   expandAll: boolean;
   maximize: boolean;
-  modal:boolean;
-  
+  modal: boolean;
 
   constructor() {
     this.canvas = null;
@@ -78,8 +77,7 @@ export class Store {
     this.selectedVideoFormat = "mp4";
     this.expandAll = true;
     this.maximize = false;
-    this.modal=false;
-    
+    this.modal = false;
 
     makeAutoObservable(this);
   }
@@ -95,8 +93,8 @@ export class Store {
   setMaximizeButton(maximize: boolean) {
     this.maximize = true;
   }
-  setModal(modal:boolean){
-    this.modal=modal;
+  setModal(modal: boolean) {
+    this.modal = modal;
   }
 
   setCanvasWidthandHeight(canvas: fabric.Canvas | null, w: number, h: number) {
@@ -2357,9 +2355,7 @@ export class Store {
     console.log("modified");
     let mp4 = this.selectedVideoFormat === "mp4";
     const canvas = document.getElementById("lower-canvas") as HTMLCanvasElement;
-    console.log(canvas);
     const stream = canvas.captureStream(15);
-
     const audioElements = this.editorElements.filter(isEditorAudioElement);
     const audioStreams: MediaStream[] = [];
     audioElements.forEach((audio) => {
@@ -2521,7 +2517,6 @@ export class Store {
               properties: {
                 ...element.properties,
                 // @ts-ignore
-                
               },
             };
             store.updateEditorElement(newElement);
@@ -2606,7 +2601,6 @@ export class Store {
               properties: {
                 ...element.properties,
                 // @ts-ignore
-                
               },
             };
             store.updateEditorElement(newElement);

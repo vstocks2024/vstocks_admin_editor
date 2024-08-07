@@ -38,6 +38,7 @@ export const Editor = observer(() => {
       height: store.height,
       width: store.width,
       backgroundColor: "#242728",
+      
     });
     fabric.Object.prototype.transparentCorners = false;
     fabric.Object.prototype.cornerColor = "#00a0f5";
@@ -55,6 +56,8 @@ export const Editor = observer(() => {
     });
 
     store.setCanvas(canvas);
+
+    
     
     fabric.util.requestAnimFrame(function render() {
       canvas.renderAll();

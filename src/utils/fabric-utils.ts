@@ -8,19 +8,15 @@ export const CoverImage = fabric.util.createClass(fabric.Image, {
   disableCrop: false,
   cropWidth: 0,
   cropHeight: 0,
-  
-  
 
   initialize(element: HTMLImageElement | HTMLVideoElement, options: any) {
-    element.crossOrigin="anonymous";
+    element.crossOrigin = "Anonymous";
     options = options || {};
 
     options = Object.assign(
       {
         cropHeight: this.height,
         cropWidth: this.width,
-        
-        
       },
       options
     );
@@ -84,6 +80,7 @@ export const CoverImage = fabric.util.createClass(fabric.Image, {
       Math.max(0, width),
       Math.max(0, height)
     );
+
     ctx.filter = "none";
     ctx.restore();
   },
@@ -95,11 +92,12 @@ export const CoverVideo = fabric.util.createClass(fabric.Image, {
   disableCrop: false,
   cropWidth: 0,
   cropHeight: 0,
+  
 
   initialize(element: HTMLVideoElement, options: any) {
-    element.crossOrigin="anonymous";
+    element.crossOrigin = "";
+
     options = options || {};
-    
 
     options = Object.assign(
       {
@@ -199,6 +197,7 @@ declare module "fabric" {
       disableCrop: boolean;
       cropWidth: number;
       cropHeight: number;
+      
     }
     class CoverImage extends Image {
       type: "coverImage";
