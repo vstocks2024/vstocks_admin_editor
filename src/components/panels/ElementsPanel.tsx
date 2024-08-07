@@ -27,7 +27,7 @@ export const ElementsPanel = observer(({ elementtype }: ElementsPanelProps) => {
   return (
   <div
       className="max-w-[19.8%] min-w-[250px] hidden min-[977px]:flex  h-full  min-[977px]:flex-col  min-[977px]:items-center 
-  min-[977px]:justify-start bg-[#202020]"
+  min-[977px]:justify-start bg-[#303030]"
     >
       {elementtype === undefined ? (
         <>

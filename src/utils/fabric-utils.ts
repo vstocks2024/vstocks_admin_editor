@@ -59,6 +59,7 @@ export const CoverImage = fabric.util.createClass(fabric.Image, {
       this.callSuper("_render", ctx);
       return;
     }
+
     const width = this.width;
     const height = this.height;
     const crop = this.getCrop(this.getOriginalSize(), {
@@ -92,7 +93,6 @@ export const CoverVideo = fabric.util.createClass(fabric.Image, {
   disableCrop: false,
   cropWidth: 0,
   cropHeight: 0,
-  
 
   initialize(element: HTMLVideoElement, options: any) {
     element.crossOrigin = "";
@@ -144,6 +144,7 @@ export const CoverVideo = fabric.util.createClass(fabric.Image, {
       this.callSuper("_render", ctx);
       return;
     }
+
     const width = this.width;
     const height = this.height;
     const crop = this.getCrop(this.getOriginalSize(), {
@@ -171,6 +172,7 @@ export const CoverVideo = fabric.util.createClass(fabric.Image, {
       Math.max(0, height)
     );
     ctx.filter = "none";
+
     ctx.restore();
   },
 });
@@ -197,7 +199,6 @@ declare module "fabric" {
       disableCrop: boolean;
       cropWidth: number;
       cropHeight: number;
-      
     }
     class CoverImage extends Image {
       type: "coverImage";
