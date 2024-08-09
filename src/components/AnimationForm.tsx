@@ -36,7 +36,7 @@ import { EditorElement } from "@/types";
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-const MAX_UPLOAD_SIZE = 1024 * 1024 * 3; // 3MB
+const MAX_UPLOAD_SIZE = 1024 * 1024 * 10; // 10MB
 const categoryoptionSchema = z.object({
   label: z.string(),
   value: z.string(),
@@ -380,13 +380,13 @@ export const AnimationForm = observer(() => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="Horizontal">
+                          <SelectItem value="horizontal">
                             Facebook Event Cover (1920 x 1080)
                           </SelectItem>
-                          <SelectItem value="Vertical">
+                          <SelectItem value="vertical">
                             Instagram Post (1080 x 1920)
                           </SelectItem>
-                          <SelectItem value="Square">
+                          <SelectItem value="square">
                             Instagram Story (1080 x 1080)
                           </SelectItem>
                         </SelectContent>
@@ -411,7 +411,7 @@ export const AnimationForm = observer(() => {
                           className="text-white bg-gray-800 hover:bg-gray-700"
                           type="file"
                           placeholder="Animation Thumbnail"
-                          accept="image/*"
+                          accept="video/*"
                           onChange={(event) =>
                             field.onChange(
                               event.target.files && event.target.files[0]

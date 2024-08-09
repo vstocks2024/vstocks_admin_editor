@@ -6,6 +6,7 @@ import { MdAdd } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { IoIosPricetag } from "react-icons/io";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 type ImageResourceProps = {
   fileid: string;
@@ -18,7 +19,7 @@ export const ImageResource = observer(
     const store = React.useContext(StoreContext);
     const ref = React.useRef<HTMLImageElement>(null);
     const [resolution, setResolution] = React.useState({ w: 0, h: 0 });
-    const [deleted, setDeleted] = useState<boolean>(false);
+    const router=useRouter();
 
     // Image Delete Button function
     const handleImageDeleteButton = async () => {
@@ -26,14 +27,14 @@ export const ImageResource = observer(
         .delete(`${process.env.NEXT_PUBLIC_URL}/image/delete/${fileid}`)
         .then((response) => {
           console.log(response);
-          setDeleted(true);
+          router.refresh();
         })
         .catch((reject) => {
           console.log(reject);
         });
     };
 
-    useEffect(() => {}, [deleted]);
+    
 
     return (
       <div className="rounded-lg  overflow-hidden items-center bg-slate-800 m-3 flex flex-col relative">
@@ -65,7 +66,7 @@ export const ImageResource = observer(
           }}
           crossOrigin='anonymous'
           ref={ref}
-          className="object-fill aspect-square"
+          className="w-[200px] aspect-auto"
           src={filesource}
           id={`image-${index}`}
         ></img>

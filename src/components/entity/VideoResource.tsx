@@ -66,10 +66,8 @@ export const VideoResource = observer(
           }}
           crossOrigin='anonymous'
           ref={ref}
-          className='aspect-video transition-all'
+          className='aspect-auto rounded-md transition-all w-[200px]'
           src={filesource}
-          height={150}
-          width={150}
           id={`video-${index}`}
           muted
           onMouseOver={()=>

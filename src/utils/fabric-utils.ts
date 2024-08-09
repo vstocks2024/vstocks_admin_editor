@@ -95,7 +95,7 @@ export const CoverVideo = fabric.util.createClass(fabric.Image, {
   cropHeight: 0,
 
   initialize(element: HTMLVideoElement, options: any) {
-    element.crossOrigin = "";
+    element.crossOrigin = "Anonymous";
 
     options = options || {};
 
