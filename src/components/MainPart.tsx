@@ -53,475 +53,475 @@ export const MainPart = observer(() => {
     return videoE;
   }
 
-  function getImageElement(url:string | undefined){
-    var imageE=document.createElement("img");
+  // function getImageElement(url:string | undefined){
+  //   var imageE=document.createElement("img");
     
-    imageE.crossOrigin="anonymous";
+  //   imageE.crossOrigin="anonymous";
 
-    return imageE;
-  }
+  //   return imageE;
+  // }
 
   const handleCanvasJSON=()=>{
-   console.log(store.canvas?.toJSON());
+  //  console.log(store.canvas?.toJSON());
   }
 
 
 
   const handleCopy=async()=> {
-    if(!store.canvas) return;
+    // if(!store.canvas) return;
     
   }
 
   const handlePaste=async()=>{
-    if(!store.canvas) return ;
-    store.canvas.clear();
+//     if(!store.canvas) return ;
+//     store.canvas.clear();
     
-    const data={
-      "version": "5.3.0",
-      "objects": [
-          {
-              "type": "image",
-              "version": "5.3.0",
-              "originX": "left",
-              "originY": "top",
-              "left": 0,
-              "top": 0,
-              "width": 1024,
-              "height": 683,
-              "fill": "rgb(0,0,0)",
-              "stroke": null,
-              "strokeWidth": 0,
-              "strokeDashArray": null,
-              "strokeLineCap": "butt",
-              "strokeDashOffset": 0,
-              "strokeLineJoin": "miter",
-              "strokeUniform": false,
-              "strokeMiterLimit": 4,
-              "scaleX": 0.76,
-              "scaleY": 0.76,
-              "angle": 0,
-              "flipX": false,
-              "flipY": false,
-              "opacity": 1,
-              "shadow": null,
-              "visible": true,
-              "backgroundColor": "",
-              "fillRule": "nonzero",
-              "paintFirst": "fill",
-              "globalCompositeOperation": "source-over",
-              "skewX": 0,
-              "skewY": 0,
-              "cropX": 0,
-              "cropY": 0,
-              "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/images/category/mahashivaratri/38e281c0-0865-49a7-a6b4-55a65261ea60",
-              "crossOrigin": "anonymous",
-              "filters": []
-          },
-          {
-              "type": "textbox",
-              "version": "5.3.0",
-              "originX": "left",
-              "originY": "top",
-              "left": 24.11,
-              "top": 7,
-              "width": 462.93,
-              "height": 76.84,
-              "fill": "#ae2424",
-              "strokeWidth": 1,
-              "strokeDashArray": null,
-              "strokeLineCap": "butt",
-              "strokeDashOffset": 0,
-              "strokeLineJoin": "milter",
-              "strokeMiterLimit": 1,
-              "scaleX": 1,
-              "scaleY": 1,
-              "angle": 0,
-              "flipX": false,
-              "flipY": false,
-              "opacity": 1,
-              "visible": true,
-              "fillRule": "nonzero",
-              "paintFirst": "fill",
-              "globalCompositeOperation": "source-over",
-              "skewX": 0,
-              "skewY": 0,
-              "fontFamily": "[object Object]",
-              "fontWeight": "normal",
-              "fontSize": 68,
-              "text": "Happy Diwali",
-              "underline": true,
-              "overline": false,
-              "linethrough": false,
-              "textAlign": "center",
-              "fontStyle": "normal",
-              "lineHeight": 1.6,
-              "textBackgroundColor": "",
-              "charSpacing": 0,
-              "styles": [],
-              "direction": "ltr",
-              "path": null,
-              "pathStartOffset": 0,
-              "pathSide": "left",
-              "pathAlign": "baseline",
-              "minWidth": 20,
-              "splitByGrapheme": false
-          }
-      ],
-      "background": "#242728"
-  };
-  const data1={
-    "version": "5.3.0",
-    "objects": [
-        {
-            "type": "image",
-            "version": "5.3.0",
-            "originX": "left",
-            "originY": "top",
-            "left": 0,
-            "top": 0,
-            "width": 778.18,
-            "height": 437.72,
-            "fill": "rgb(0,0,0)",
-            "stroke": null,
-            "strokeWidth": 0,
-            "strokeDashArray": null,
-            "strokeLineCap": "butt",
-            "strokeDashOffset": 0,
-            "strokeLineJoin": "miter",
-            "strokeUniform": false,
-            "strokeMiterLimit": 4,
-            "scaleX": 1,
-            "scaleY": 1,
-            "angle": 0,
-            "flipX": false,
-            "flipY": false,
-            "opacity": 1,
-            "shadow": null,
-            "visible": true,
-            "backgroundColor": "",
-            "fillRule": "nonzero",
-            "paintFirst": "fill",
-            "globalCompositeOperation": "source-over",
-            "skewX": 0,
-            "skewY": 0,
-            "cropX": 0,
-            "cropY": 0,
-            "name": "a83a8d16-f429-4159-bb18-f9de48af1f19.qv0466s5g3f",
-            "disableCrop": false,
-            "cropWidth": 0,
-            "cropHeight": 0,
-            "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/a83a8d16-f429-4159-bb18-f9de48af1f19",
-            "duration": 15,
-            "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/a83a8d16-f429-4159-bb18-f9de48af1f19",
-            "crossOrigin": "anonymous",
-            "filters": []
-        },
-        {
-            "type": "image",
-            "version": "5.3.0",
-            "originX": "left",
-            "originY": "top",
-            "left": 0,
-            "top": 0,
-            "width": 775.61,
-            "height": 436.28,
-            "fill": "rgb(0,0,0)",
-            "stroke": null,
-            "strokeWidth": 0,
-            "strokeDashArray": null,
-            "strokeLineCap": "butt",
-            "strokeDashOffset": 0,
-            "strokeLineJoin": "miter",
-            "strokeUniform": false,
-            "strokeMiterLimit": 4,
-            "scaleX": 1,
-            "scaleY": 1,
-            "angle": 0,
-            "flipX": false,
-            "flipY": false,
-            "opacity": 1,
-            "shadow": null,
-            "visible": true,
-            "backgroundColor": "",
-            "fillRule": "nonzero",
-            "paintFirst": "fill",
-            "globalCompositeOperation": "source-over",
-            "skewX": 0,
-            "skewY": 0,
-            "cropX": 0,
-            "cropY": 0,
-            "name": "1d4040ff-79f8-4b69-8216-d23ddfca4e45.kre548nlmhk",
-            "disableCrop": false,
-            "cropWidth": 0,
-            "cropHeight": 0,
-            "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/1d4040ff-79f8-4b69-8216-d23ddfca4e45",
-            "duration": 15,
-            "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/1d4040ff-79f8-4b69-8216-d23ddfca4e45",
-            "crossOrigin": "anonymous",
-            "filters": []
-        }
-    ],
-    "background": "#242728"
-};
+//     const data={
+//       "version": "5.3.0",
+//       "objects": [
+//           {
+//               "type": "image",
+//               "version": "5.3.0",
+//               "originX": "left",
+//               "originY": "top",
+//               "left": 0,
+//               "top": 0,
+//               "width": 1024,
+//               "height": 683,
+//               "fill": "rgb(0,0,0)",
+//               "stroke": null,
+//               "strokeWidth": 0,
+//               "strokeDashArray": null,
+//               "strokeLineCap": "butt",
+//               "strokeDashOffset": 0,
+//               "strokeLineJoin": "miter",
+//               "strokeUniform": false,
+//               "strokeMiterLimit": 4,
+//               "scaleX": 0.76,
+//               "scaleY": 0.76,
+//               "angle": 0,
+//               "flipX": false,
+//               "flipY": false,
+//               "opacity": 1,
+//               "shadow": null,
+//               "visible": true,
+//               "backgroundColor": "",
+//               "fillRule": "nonzero",
+//               "paintFirst": "fill",
+//               "globalCompositeOperation": "source-over",
+//               "skewX": 0,
+//               "skewY": 0,
+//               "cropX": 0,
+//               "cropY": 0,
+//               "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/images/category/mahashivaratri/38e281c0-0865-49a7-a6b4-55a65261ea60",
+//               "crossOrigin": "anonymous",
+//               "filters": []
+//           },
+//           {
+//               "type": "textbox",
+//               "version": "5.3.0",
+//               "originX": "left",
+//               "originY": "top",
+//               "left": 24.11,
+//               "top": 7,
+//               "width": 462.93,
+//               "height": 76.84,
+//               "fill": "#ae2424",
+//               "strokeWidth": 1,
+//               "strokeDashArray": null,
+//               "strokeLineCap": "butt",
+//               "strokeDashOffset": 0,
+//               "strokeLineJoin": "milter",
+//               "strokeMiterLimit": 1,
+//               "scaleX": 1,
+//               "scaleY": 1,
+//               "angle": 0,
+//               "flipX": false,
+//               "flipY": false,
+//               "opacity": 1,
+//               "visible": true,
+//               "fillRule": "nonzero",
+//               "paintFirst": "fill",
+//               "globalCompositeOperation": "source-over",
+//               "skewX": 0,
+//               "skewY": 0,
+//               "fontFamily": "[object Object]",
+//               "fontWeight": "normal",
+//               "fontSize": 68,
+//               "text": "Happy Diwali",
+//               "underline": true,
+//               "overline": false,
+//               "linethrough": false,
+//               "textAlign": "center",
+//               "fontStyle": "normal",
+//               "lineHeight": 1.6,
+//               "textBackgroundColor": "",
+//               "charSpacing": 0,
+//               "styles": [],
+//               "direction": "ltr",
+//               "path": null,
+//               "pathStartOffset": 0,
+//               "pathSide": "left",
+//               "pathAlign": "baseline",
+//               "minWidth": 20,
+//               "splitByGrapheme": false
+//           }
+//       ],
+//       "background": "#242728"
+//   };
+//   const data1={
+//     "version": "5.3.0",
+//     "objects": [
+//         {
+//             "type": "image",
+//             "version": "5.3.0",
+//             "originX": "left",
+//             "originY": "top",
+//             "left": 0,
+//             "top": 0,
+//             "width": 778.18,
+//             "height": 437.72,
+//             "fill": "rgb(0,0,0)",
+//             "stroke": null,
+//             "strokeWidth": 0,
+//             "strokeDashArray": null,
+//             "strokeLineCap": "butt",
+//             "strokeDashOffset": 0,
+//             "strokeLineJoin": "miter",
+//             "strokeUniform": false,
+//             "strokeMiterLimit": 4,
+//             "scaleX": 1,
+//             "scaleY": 1,
+//             "angle": 0,
+//             "flipX": false,
+//             "flipY": false,
+//             "opacity": 1,
+//             "shadow": null,
+//             "visible": true,
+//             "backgroundColor": "",
+//             "fillRule": "nonzero",
+//             "paintFirst": "fill",
+//             "globalCompositeOperation": "source-over",
+//             "skewX": 0,
+//             "skewY": 0,
+//             "cropX": 0,
+//             "cropY": 0,
+//             "name": "a83a8d16-f429-4159-bb18-f9de48af1f19.qv0466s5g3f",
+//             "disableCrop": false,
+//             "cropWidth": 0,
+//             "cropHeight": 0,
+//             "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/a83a8d16-f429-4159-bb18-f9de48af1f19",
+//             "duration": 15,
+//             "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/a83a8d16-f429-4159-bb18-f9de48af1f19",
+//             "crossOrigin": "anonymous",
+//             "filters": []
+//         },
+//         {
+//             "type": "image",
+//             "version": "5.3.0",
+//             "originX": "left",
+//             "originY": "top",
+//             "left": 0,
+//             "top": 0,
+//             "width": 775.61,
+//             "height": 436.28,
+//             "fill": "rgb(0,0,0)",
+//             "stroke": null,
+//             "strokeWidth": 0,
+//             "strokeDashArray": null,
+//             "strokeLineCap": "butt",
+//             "strokeDashOffset": 0,
+//             "strokeLineJoin": "miter",
+//             "strokeUniform": false,
+//             "strokeMiterLimit": 4,
+//             "scaleX": 1,
+//             "scaleY": 1,
+//             "angle": 0,
+//             "flipX": false,
+//             "flipY": false,
+//             "opacity": 1,
+//             "shadow": null,
+//             "visible": true,
+//             "backgroundColor": "",
+//             "fillRule": "nonzero",
+//             "paintFirst": "fill",
+//             "globalCompositeOperation": "source-over",
+//             "skewX": 0,
+//             "skewY": 0,
+//             "cropX": 0,
+//             "cropY": 0,
+//             "name": "1d4040ff-79f8-4b69-8216-d23ddfca4e45.kre548nlmhk",
+//             "disableCrop": false,
+//             "cropWidth": 0,
+//             "cropHeight": 0,
+//             "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/1d4040ff-79f8-4b69-8216-d23ddfca4e45",
+//             "duration": 15,
+//             "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/1d4040ff-79f8-4b69-8216-d23ddfca4e45",
+//             "crossOrigin": "anonymous",
+//             "filters": []
+//         }
+//     ],
+//     "background": "#242728"
+// };
 
 
-    if(!store.canvas) return ;
-    var canvas = store.canvas.loadFromJSON(JSON.stringify(data1), canvasLoaded , function(o :any, object:any) {
-      fabric.log(o, object);
-  });
+//     if(!store.canvas) return ;
+//     var canvas = store.canvas.loadFromJSON(JSON.stringify(data1), canvasLoaded , function(o :any, object:any) {
+//       fabric.log(o, object);
+//   });
 
-  function canvasLoaded(){      
-     canvas.renderAll.bind(canvas);
-     var objs = data1['objects'];      
-     for(var i=0; i< objs.length; i++){
-        if(objs[i].hasOwnProperty('video_src')){
-           var videoE = getVideoElement(objs[i]['src'],objs[i]["width"],objs[i]["height"]) as HTMLVideoElement; 
-           var fab_video = new fabric.CoverVideo(videoE, { type:objs[i]["type"],
-            left:objs[i]["left"],
-            top:objs[i]["top"]          
-           }) as any ;    
+//   function canvasLoaded(){      
+//      canvas.renderAll.bind(canvas);
+//      var objs = data1['objects'];      
+//      for(var i=0; i< objs.length; i++){
+//         if(objs[i].hasOwnProperty('video_src')){
+//            var videoE = getVideoElement(objs[i]['src'],objs[i]["width"],objs[i]["height"]) as HTMLVideoElement; 
+//            var fab_video = new fabric.CoverVideo(videoE, { type:objs[i]["type"],
+//             left:objs[i]["left"],
+//             top:objs[i]["top"]          
+//            }) as any ;    
                 
            
-           canvas.add(fab_video);
-           fab_video.getElement().play();                 
-           fabric.util.requestAnimFrame(function render() {                      
-              canvas.renderAll();                     
-              fabric.util.requestAnimFrame(render);                
-           });
-        }
-     }
-  }
+//            canvas.add(fab_video);
+//            fab_video.getElement().play();                 
+//            fabric.util.requestAnimFrame(function render() {                      
+//               canvas.renderAll();                     
+//               fabric.util.requestAnimFrame(render);                
+//            });
+//         }
+//      }
+//   }
   }
 
   const handleUndo=()=>{
-const data={
-  "version": "5.3.0",
-  "objects": [
-      {
-          "type": "image",
-          "version": "5.3.0",
-          "originX": "left",
-          "originY": "top",
-          "left": 0,
-          "top": 0,
-          "width": 780.09,
-          "height": 438.8,
-          "fill": "rgb(0,0,0)",
-          "stroke": null,
-          "strokeWidth": 0,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeDashOffset": 0,
-          "strokeLineJoin": "miter",
-          "strokeUniform": false,
-          "strokeMiterLimit": 4,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "skewX": 0,
-          "skewY": 0,
-          "cropX": 0,
-          "cropY": 0,
-          "name": "538c7e0c-3553-4436-a3e2-0cb321b51cf2.ujx37eid2gj",
-          "disableCrop": false,
-          "cropWidth": 0,
-          "cropHeight": 0,
-          "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/538c7e0c-3553-4436-a3e2-0cb321b51cf2",
-          "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/538c7e0c-3553-4436-a3e2-0cb321b51cf2",
-          "crossOrigin": "anonymous",
-          "filters": []
-      },
-      {
-          "type": "image",
-          "version": "5.3.0",
-          "originX": "left",
-          "originY": "top",
-          "left": 0,
-          "top": 0,
-          "width": 774.11,
-          "height": 435.44,
-          "fill": "rgb(0,0,0)",
-          "stroke": null,
-          "strokeWidth": 0,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeDashOffset": 0,
-          "strokeLineJoin": "miter",
-          "strokeUniform": false,
-          "strokeMiterLimit": 4,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "skewX": 0,
-          "skewY": 0,
-          "cropX": 0,
-          "cropY": 0,
-          "name": "81eca294-46be-4a87-a366-0f4b388a8952.s7rqx0wh8pf",
-          "disableCrop": false,
-          "cropWidth": 0,
-          "cropHeight": 0,
-          "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/81eca294-46be-4a87-a366-0f4b388a8952",
-          "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/81eca294-46be-4a87-a366-0f4b388a8952",
-          "crossOrigin": "anonymous",
-          "filters": []
-      },
-      {
-          "type": "image",
-          "version": "5.3.0",
-          "originX": "left",
-          "originY": "top",
-          "left": 0,
-          "top": 0,
-          "width": 775.39,
-          "height": 436.16,
-          "fill": "rgb(0,0,0)",
-          "stroke": null,
-          "strokeWidth": 0,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeDashOffset": 0,
-          "strokeLineJoin": "miter",
-          "strokeUniform": false,
-          "strokeMiterLimit": 4,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "skewX": 0,
-          "skewY": 0,
-          "cropX": 0,
-          "cropY": 0,
-          "name": "e32a9c6d-7884-481c-839a-1271b5822f8b.vm5s2iraui",
-          "disableCrop": false,
-          "cropWidth": 0,
-          "cropHeight": 0,
-          "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/e32a9c6d-7884-481c-839a-1271b5822f8b",
-          "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/e32a9c6d-7884-481c-839a-1271b5822f8b",
-          "crossOrigin": "anonymous",
-          "filters": []
-      },
-      {
-          "type": "textbox",
-          "version": "5.3.0",
-          "originX": "left",
-          "originY": "top",
-          "left": 245,
-          "top": 81,
-          "width": 269.82,
-          "height": 66.67,
-          "fill": "#FFFFFF",
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeDashOffset": 0,
-          "strokeLineJoin": "milter",
-          "strokeMiterLimit": 1,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "visible": true,
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "skewX": 0,
-          "skewY": 0,
-          "fontFamily": "[object Object]",
-          "fontWeight": "normal",
-          "fontSize": 59,
-          "text": "Mahashivratri",
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "fontStyle": "normal",
-          "lineHeight": 1.6,
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "styles": [],
-          "direction": "ltr",
-          "path": null,
-          "pathStartOffset": 0,
-          "pathSide": "left",
-          "pathAlign": "baseline",
-          "minWidth": 20,
-          "splitByGrapheme": false
-      }
-  ],
-  "background": "#242728"
-};    
+// const data={
+//   "version": "5.3.0",
+//   "objects": [
+//       {
+//           "type": "image",
+//           "version": "5.3.0",
+//           "originX": "left",
+//           "originY": "top",
+//           "left": 0,
+//           "top": 0,
+//           "width": 780.09,
+//           "height": 438.8,
+//           "fill": "rgb(0,0,0)",
+//           "stroke": null,
+//           "strokeWidth": 0,
+//           "strokeDashArray": null,
+//           "strokeLineCap": "butt",
+//           "strokeDashOffset": 0,
+//           "strokeLineJoin": "miter",
+//           "strokeUniform": false,
+//           "strokeMiterLimit": 4,
+//           "scaleX": 1,
+//           "scaleY": 1,
+//           "angle": 0,
+//           "flipX": false,
+//           "flipY": false,
+//           "opacity": 1,
+//           "shadow": null,
+//           "visible": true,
+//           "backgroundColor": "",
+//           "fillRule": "nonzero",
+//           "paintFirst": "fill",
+//           "globalCompositeOperation": "source-over",
+//           "skewX": 0,
+//           "skewY": 0,
+//           "cropX": 0,
+//           "cropY": 0,
+//           "name": "538c7e0c-3553-4436-a3e2-0cb321b51cf2.ujx37eid2gj",
+//           "disableCrop": false,
+//           "cropWidth": 0,
+//           "cropHeight": 0,
+//           "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/538c7e0c-3553-4436-a3e2-0cb321b51cf2",
+//           "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/538c7e0c-3553-4436-a3e2-0cb321b51cf2",
+//           "crossOrigin": "anonymous",
+//           "filters": []
+//       },
+//       {
+//           "type": "image",
+//           "version": "5.3.0",
+//           "originX": "left",
+//           "originY": "top",
+//           "left": 0,
+//           "top": 0,
+//           "width": 774.11,
+//           "height": 435.44,
+//           "fill": "rgb(0,0,0)",
+//           "stroke": null,
+//           "strokeWidth": 0,
+//           "strokeDashArray": null,
+//           "strokeLineCap": "butt",
+//           "strokeDashOffset": 0,
+//           "strokeLineJoin": "miter",
+//           "strokeUniform": false,
+//           "strokeMiterLimit": 4,
+//           "scaleX": 1,
+//           "scaleY": 1,
+//           "angle": 0,
+//           "flipX": false,
+//           "flipY": false,
+//           "opacity": 1,
+//           "shadow": null,
+//           "visible": true,
+//           "backgroundColor": "",
+//           "fillRule": "nonzero",
+//           "paintFirst": "fill",
+//           "globalCompositeOperation": "source-over",
+//           "skewX": 0,
+//           "skewY": 0,
+//           "cropX": 0,
+//           "cropY": 0,
+//           "name": "81eca294-46be-4a87-a366-0f4b388a8952.s7rqx0wh8pf",
+//           "disableCrop": false,
+//           "cropWidth": 0,
+//           "cropHeight": 0,
+//           "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/81eca294-46be-4a87-a366-0f4b388a8952",
+//           "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/81eca294-46be-4a87-a366-0f4b388a8952",
+//           "crossOrigin": "anonymous",
+//           "filters": []
+//       },
+//       {
+//           "type": "image",
+//           "version": "5.3.0",
+//           "originX": "left",
+//           "originY": "top",
+//           "left": 0,
+//           "top": 0,
+//           "width": 775.39,
+//           "height": 436.16,
+//           "fill": "rgb(0,0,0)",
+//           "stroke": null,
+//           "strokeWidth": 0,
+//           "strokeDashArray": null,
+//           "strokeLineCap": "butt",
+//           "strokeDashOffset": 0,
+//           "strokeLineJoin": "miter",
+//           "strokeUniform": false,
+//           "strokeMiterLimit": 4,
+//           "scaleX": 1,
+//           "scaleY": 1,
+//           "angle": 0,
+//           "flipX": false,
+//           "flipY": false,
+//           "opacity": 1,
+//           "shadow": null,
+//           "visible": true,
+//           "backgroundColor": "",
+//           "fillRule": "nonzero",
+//           "paintFirst": "fill",
+//           "globalCompositeOperation": "source-over",
+//           "skewX": 0,
+//           "skewY": 0,
+//           "cropX": 0,
+//           "cropY": 0,
+//           "name": "e32a9c6d-7884-481c-839a-1271b5822f8b.vm5s2iraui",
+//           "disableCrop": false,
+//           "cropWidth": 0,
+//           "cropHeight": 0,
+//           "video_src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/e32a9c6d-7884-481c-839a-1271b5822f8b",
+//           "src": "https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/e32a9c6d-7884-481c-839a-1271b5822f8b",
+//           "crossOrigin": "anonymous",
+//           "filters": []
+//       },
+//       {
+//           "type": "textbox",
+//           "version": "5.3.0",
+//           "originX": "left",
+//           "originY": "top",
+//           "left": 245,
+//           "top": 81,
+//           "width": 269.82,
+//           "height": 66.67,
+//           "fill": "#FFFFFF",
+//           "strokeWidth": 1,
+//           "strokeDashArray": null,
+//           "strokeLineCap": "butt",
+//           "strokeDashOffset": 0,
+//           "strokeLineJoin": "milter",
+//           "strokeMiterLimit": 1,
+//           "scaleX": 1,
+//           "scaleY": 1,
+//           "angle": 0,
+//           "flipX": false,
+//           "flipY": false,
+//           "opacity": 1,
+//           "visible": true,
+//           "fillRule": "nonzero",
+//           "paintFirst": "fill",
+//           "globalCompositeOperation": "source-over",
+//           "skewX": 0,
+//           "skewY": 0,
+//           "fontFamily": "[object Object]",
+//           "fontWeight": "normal",
+//           "fontSize": 59,
+//           "text": "Mahashivratri",
+//           "underline": false,
+//           "overline": false,
+//           "linethrough": false,
+//           "textAlign": "center",
+//           "fontStyle": "normal",
+//           "lineHeight": 1.6,
+//           "textBackgroundColor": "",
+//           "charSpacing": 0,
+//           "styles": [],
+//           "direction": "ltr",
+//           "path": null,
+//           "pathStartOffset": 0,
+//           "pathSide": "left",
+//           "pathAlign": "baseline",
+//           "minWidth": 20,
+//           "splitByGrapheme": false
+//       }
+//   ],
+//   "background": "#242728"
+// };    
 
 
-  if(!store.canvas) return ;
-    var canvas = store.canvas.loadFromJSON(JSON.stringify(data), canvasLoaded , function(o :any, object:any) {
-      fabric.log(o, object);
-  });
-  function canvasLoaded(){      
-    canvas.preserveObjectStacking=true;
-     canvas.renderAll.bind(canvas);
-     var objs = data['objects'];      
-     for(var i=0; i< objs.length; i++){
-        if(objs[i].hasOwnProperty('video_src')){
-          var videoE = getVideoElement(objs[i]['video_src'],objs[i]["width"],objs[i]["height"]) as HTMLVideoElement; 
-           var fab_video = new fabric.CoverVideo(videoE, {type:objs[i]["type"],left:objs[i]["left"],top:objs[i]["top"]} ) as any;                   
-           canvas.add(fab_video);
-           fab_video.getElement().play();              
-           fabric.util.requestAnimFrame(function render() {                      
-              canvas.renderAll();                     
-              fabric.util.requestAnimFrame(render);                
-           });
-        }
-    }
-  }
+//   if(!store.canvas) return ;
+//     var canvas = store.canvas.loadFromJSON(JSON.stringify(data), canvasLoaded , function(o :any, object:any) {
+//       fabric.log(o, object);
+//   });
+//   function canvasLoaded(){      
+//     canvas.preserveObjectStacking=true;
+//      canvas.renderAll.bind(canvas);
+//      var objs = data['objects'];      
+//      for(var i=0; i< objs.length; i++){
+//         if(objs[i].hasOwnProperty('video_src')){
+//           var videoE = getVideoElement(objs[i]['video_src'],objs[i]["width"],objs[i]["height"]) as HTMLVideoElement; 
+//            var fab_video = new fabric.CoverVideo(videoE, {type:objs[i]["type"],left:objs[i]["left"],top:objs[i]["top"]} ) as any;                   
+//            canvas.add(fab_video);
+//            fab_video.getElement().play();              
+//            fabric.util.requestAnimFrame(function render() {                      
+//               canvas.renderAll();                     
+//               fabric.util.requestAnimFrame(render);                
+//            });
+//         }
+//     }
+//   }
     
   }
 
   const handleLayers=()=>{
     // console.log(store.canvas?.getObjects().length);
     // console.log(store.canvas?.toJSON());
-    var labeledRect = new fabric.LabeledRect({
-      width: 100,
-      height: 50,
-      left: 100,
-      top: 100,
-      label: 'mayank',
-      fill: '#faa'
-    });
+    // var labeledRect = new fabric.LabeledRect({
+    //   width: 100,
+    //   height: 50,
+    //   left: 100,
+    //   top: 100,
+    //   label: 'mayank',
+    //   fill: '#faa'
+    // });
 
-    labeledRect.set({
-      label: 'trololo',
-      fill: '#aaf',
-      rx: 10,
-      ry: 10
-    });
+    // labeledRect.set({
+    //   label: 'trololo',
+    //   fill: '#aaf',
+    //   rx: 10,
+    //   ry: 10
+    // });
 
   }
   const handleDeleteButton = async () => {
