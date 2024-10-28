@@ -2156,18 +2156,6 @@ export class Store {
       },
     });
   }
-  
-  // addCircle(options:{shapetype: string}){
-  //   const id=getUid();
-  //   const index=this.editorElements.length;
-  //   this.addEditorElement({
-  //     id,
-  //     name:`Circle ${index+1}`,
-  //     type:"circle",
-  //   })
-
-  // }
-
   addText(options: {
     fontSize: number | undefined;
     fontFamily: string | undefined;
