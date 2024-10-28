@@ -787,7 +787,7 @@ export const MainPart = observer(() => {
             <span>
               <MdFileDownload
                 size={24}
-                onClick={handleGetTemplateById}
+                // onClick={handleGetTemplateById}
                 className=" cursor-pointer"
               />
             </span>

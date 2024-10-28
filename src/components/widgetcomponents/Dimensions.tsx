@@ -6,6 +6,7 @@ import { StoreContext } from "@/store";
 import { MdOutlineExpandLess,MdOutlineExpandMore } from 'react-icons/md';
 
 export const Dimensions = observer(() => {
+  const store = React.useContext(StoreContext);
     const [expand,setExpand]=React.useState<boolean>(true);
     return (
       <>

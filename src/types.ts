@@ -31,11 +31,16 @@ export type TextEditorElement = EditorElementBase<
     textboxObject?:fabric.Textbox
   }>;
 
+export type CircleEditorElement = EditorElementBase<"circle",{}>;
+export type RectEditorElement = EditorElementBase<"rect",{}>;
+
 export type EditorElement =
   | VideoEditorElement
   | ImageEditorElement
   | AudioEditorElement
-  | TextEditorElement;
+  | TextEditorElement
+  | CircleEditorElement
+  | RectEditorElement;
 
 export type Placement = {
   x: number;
