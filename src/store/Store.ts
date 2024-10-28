@@ -2474,18 +2474,7 @@ export class Store {
             customFilter: element.properties.effect.type,
           });
           
-          // videoObject._controlsVisibility={
-          //   bl: true,
-          //   br: true,
-          //   mb: false,
-          //   ml: false,
-          //   mr: false,
-          //   mt: false,
-          //   tl: true,
-          //   tr: true,
-          //   mtr: true,
-          // }
-          
+ 
           
           element.fabricObject = videoObject;
           element.properties.imageObject = videoObject;
