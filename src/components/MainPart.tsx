@@ -62,7 +62,7 @@ export const MainPart = observer(() => {
   // }
 
   const handleCanvasJSON=()=>{
-  //  console.log(store.canvas?.toJSON());
+   console.log(store.canvas?.toJSON());
   }
 
 

@@ -65,6 +65,21 @@ export const Font = observer(() => {
     }
   };
   // End of this function
+  const handleNewFont=async(event: React.ChangeEvent<HTMLSelectElement>)=>{
+    if(!event) return ;
+    if (!event.target) return;
+    if (!store.selectedElement) return;
+    if (!store.canvas) return;
+ 
+    try {
+      console.log(store.canvas.getActiveObject())
+      var newtextbox=store.canvas.getActiveObject();
+      
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
 
   const handleFontSize = async (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -273,7 +288,8 @@ export const Font = observer(() => {
                             ? store.selectedElement.properties.fontFamily
                             : "Actor"
                         }
-                        onChange={handleFontFamily}
+                        // onChange={handleFontFamily}
+                        onChange={handleNewFont}
                         className="focus:outline-none text-white w-full bg-black border-b-[1px] border-[#444444] bg-transparent text-[11px] cursor-pointer"
                       >
                         {results.map((val: any, ind: any, oa: any) => {
