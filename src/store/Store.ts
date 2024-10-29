@@ -17,6 +17,7 @@ import {
   AudioEditorElement,
   Placement,
   ImageEditorElement,
+  CircleEditorElement,
   Effect,
   TextEditorElement,
 } from "@/types";
@@ -1475,7 +1476,8 @@ export class Store {
     if (
       isEditorAudioElement(element) ||
       isEditorImageElement(element) ||
-      isEditorVideoElement(element)
+      isEditorVideoElement(element) ||
+      isEditorCircleElement(element)
     )
       return;
     const newPlacement = {
@@ -1530,7 +1532,8 @@ export class Store {
     if (
       isEditorAudioElement(element) ||
       isEditorImageElement(element) ||
-      isEditorVideoElement(element)
+      isEditorVideoElement(element) ||
+      isEditorCircleElement(element)
     )
       return;
     const newPlacement = {
@@ -2077,7 +2080,6 @@ export class Store {
       properties: {
         elementId: `${id}`,
         src: videoElement.src,
-        originSrc:`https://s3.ap-south-1.amazonaws.com/vstock.bucket.1/users/uploads/videos/category/mahashivaratri/${fileid}`,
         effect: {
           type: "none",
         },
@@ -2155,6 +2157,35 @@ export class Store {
         src: audioElement.src,
       },
     });
+  }
+  addCircle(options:{shapetype:string}){
+    const id=getUid();
+    const index=this.editorElements.length;
+    this.addEditorElement({
+      id,
+      name: `Circle-${index + 1}`,
+      type: "circle",
+      placement: {
+        x: 0,
+        y: 0,
+        width: 200,
+        height: 200,
+        rotation: 0,
+        scaleX: 1,
+        scaleY: 1,
+        flipX: false,
+        flipY: false,
+        opacity: 1.0,
+      },
+      timeFrame: {
+        start: 0,
+        end: this.maxTime
+      },
+      properties: {
+        elementId: `${id}`
+      }
+    });
+
   }
   addText(options: {
     fontSize: number | undefined;
@@ -2474,7 +2505,18 @@ export class Store {
             customFilter: element.properties.effect.type,
           });
           
- 
+          // videoObject._controlsVisibility={
+          //   bl: true,
+          //   br: true,
+          //   mb: false,
+          //   ml: false,
+          //   mr: false,
+          //   mt: false,
+          //   tl: true,
+          //   tr: true,
+          //   mtr: true,
+          // }
+          
           
           element.fabricObject = videoObject;
           element.properties.imageObject = videoObject;
@@ -2709,6 +2751,19 @@ export class Store {
           });
           break;
         }
+        case "circle": {
+          var circle = new fabric.Circle({
+            radius: 60, fill: 'green', left: 100, top: 100,
+            includeDefaultValues: true,
+          });
+          canvas.add(circle);
+          console.log(canvas.toJSON());
+          canvas.on("object:modified",function(eve){
+            if(!eve) return;
+            if (!eve.target) return;
+          })
+          break;
+        }
         default: {
           throw new Error("Not implemented");
         }
@@ -2745,7 +2800,11 @@ export function isEditorImageElement(
 ): element is ImageEditorElement {
   return element.type === "image";
 }
-
+export function isEditorCircleElement(
+  element: EditorElement
+): element is CircleEditorElement {
+  return element.type === "circle";
+}
 export function getTextObjectsPartitionedByCharacters(
   textObject: fabric.Text,
   element: TextEditorElement

@@ -13,7 +13,7 @@ export type EditorElementBase<T extends string, Properties> = {
 };
 export type VideoEditorElement = EditorElementBase<
   "video",
-  { originSrc:string | undefined; src: string | undefined; readonly elementId: string; imageObject?: fabric.Image, effect: Effect }>;
+  {  src: string | undefined; readonly elementId: string; imageObject?: fabric.Image, effect: Effect }>;
 export type ImageEditorElement = EditorElementBase<
   "image",
   {  src: string | undefined; readonly elementId: string; imageObject?: fabric.Object, effect: Effect }>;
@@ -31,7 +31,10 @@ export type TextEditorElement = EditorElementBase<
     textboxObject?:fabric.Textbox
   }>;
 
+export type CircleEditorElement=EditorElementBase<"circle",{readonly elementId:string}>;
+
 export type EditorElement =
+  | CircleEditorElement
   | VideoEditorElement
   | ImageEditorElement
   | AudioEditorElement

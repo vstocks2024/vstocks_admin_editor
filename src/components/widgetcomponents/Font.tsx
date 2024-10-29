@@ -17,6 +17,7 @@ import {
 import { family_variants_arr } from "@/types";
 import {
   isEditorAudioElement,
+  isEditorCircleElement,
   isEditorImageElement,
   isEditorVideoElement,
 } from "@/store/Store";
@@ -284,7 +285,8 @@ export const Font = observer(() => {
                           store.selectedElement &&
                           !isEditorAudioElement(store.selectedElement) &&
                           !isEditorImageElement(store.selectedElement) &&
-                          !isEditorVideoElement(store.selectedElement)
+                          !isEditorVideoElement(store.selectedElement) &&
+                          !isEditorCircleElement(store.selectedElement)
                             ? store.selectedElement.properties.fontFamily
                             : "Actor"
                         }
@@ -323,7 +325,8 @@ export const Font = observer(() => {
                       store.selectedElement &&
                       !isEditorAudioElement(store.selectedElement) &&
                       !isEditorImageElement(store.selectedElement) &&
-                      !isEditorVideoElement(store.selectedElement)
+                      !isEditorVideoElement(store.selectedElement) &&
+                      !isEditorCircleElement(store.selectedElement)
                         ? store.selectedElement.properties.fontSize
                         : 8
                     }

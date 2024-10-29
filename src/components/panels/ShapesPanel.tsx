@@ -23,11 +23,15 @@ const SHAPES_OPTIONS = [
     icon: MdOutlineCircle,
     action:(store:Store)=>{
        if(!store.canvas) return;
-       var circle = new fabric.Circle({
-        radius: 60, fill: 'green', left: 100, top: 100,
-        includeDefaultValues: true,
-      });
-      store.canvas.add(circle);
+       store.addCircle({shapetype:"circle"});
+      // var circle = new fabric.Circle({
+      //   radius:60, 
+      //   fill:'green', 
+      //   left: 100, 
+      //   top: 100,
+      //   includeDefaultValues: true,
+      // });
+      // store.canvas.add(circle);
     }
   },{
     name: "Ellipse",
@@ -223,15 +227,8 @@ export const ShapesPanel = observer(() => {
         radius: 60, fill: 'green', left: 100, top: 100
       });
        store.canvas.add(circle);
-    
-
   }
-  useEffect(()=>{
-    // circleRef.current?.addEventListener("click",handleCircleShape);
-    // return ()=>{
-    //   circleRef.current?.removeEventListener("click",handleCircleShape);
-    // }
-  },[])
+
   return (
     <div className="items-center overflow-x-hidden overflow-y-auto justify-start flex flex-col py-2  px-0.5">
       <div className='w-[100px] p-0.5'/>

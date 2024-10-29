@@ -12,7 +12,7 @@ import { MainPart } from "./MainPart";
 import { MainCanvas } from "../components/MainCanvas";
 import { CanvasFooter } from "../components/CanvasFooter";
 import { Store } from "@/store/Store";
-import { BackCustomize } from "./BackCustomize";
+// import { BackCustomize } from "./BackCustomize";
 import { MainLayout } from "@/app/layouts/MainLayout";
 
 export const EditorWithStore = () => {
@@ -57,6 +57,7 @@ export const Editor = observer(() => {
       width: store.width,
       backgroundColor: "#242728",
       preserveObjectStacking:true,
+      
     });
     fabric.Object.prototype.transparentCorners = true;
 
@@ -64,18 +65,18 @@ export const Editor = observer(() => {
 
     fabric.Object.prototype.cornerSize = 14;
 
-    canvas.preserveObjectStacking=true;
-
     
-
-   
-
     // canvas mouse down without target should deselect active object
     canvas.on("mouse:down",handleMouseDown);
     // canvas.on("object:moving",handleObjectMoving);
     canvas.on("object:modified",handleObjectModified);
 
     store.setCanvas(canvas);
+    // fabric.Image.fromURL('https://fastly.picsum.photos/id/16/775/436/1667.jpg?hmac=uAkZwYc5phCRNFTrV_prJ_0rP0EdwJaZ4ctje2bY7aE', function(oImg) {
+    //   if(!store.canvas) return;
+    //   store.canvas.add(oImg);
+    // });
+    
     fabric.util.requestAnimFrame(function render() {
       canvas.renderAll();
       fabric.util.requestAnimFrame(render);
@@ -96,7 +97,7 @@ export const Editor = observer(() => {
     <MainLayout>
       <main className="relative flex flex-col items-center justify-between   w-full">
         <div className="flex flex-col  w-full">
-          <BackCustomize />
+          {/* <BackCustomize /> */}
           <MainPart />
         </div>
         {/* h-[79.5632vh] */}
