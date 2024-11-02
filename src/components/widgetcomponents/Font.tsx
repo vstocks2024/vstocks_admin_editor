@@ -290,8 +290,8 @@ export const Font = observer(() => {
                             ? store.selectedElement.properties.fontFamily
                             : "Actor"
                         }
-                        // onChange={handleFontFamily}
-                        onChange={handleNewFont}
+                        onChange={handleFontFamily}
+                        // onChange={handleNewFont}
                         className="focus:outline-none text-white w-full bg-black border-b-[1px] border-[#444444] bg-transparent text-[11px] cursor-pointer"
                       >
                         {results.map((val: any, ind: any, oa: any) => {

@@ -12,8 +12,7 @@ import { MainPart } from "./MainPart";
 import { MainCanvas } from "../components/MainCanvas";
 import { CanvasFooter } from "../components/CanvasFooter";
 import { Store } from "@/store/Store";
-// import { BackCustomize } from "./BackCustomize";
-import { MainLayout } from "@/app/layouts/MainLayout";
+import { MainLayout } from "@/components/layouts/MainLayout";
 
 export const EditorWithStore = () => {
   const [store] = useState(new Store());
@@ -97,7 +96,6 @@ export const Editor = observer(() => {
     <MainLayout>
       <main className="relative flex flex-col items-center justify-between   w-full">
         <div className="flex flex-col  w-full">
-          {/* <BackCustomize /> */}
           <MainPart />
         </div>
         {/* h-[79.5632vh] */}
